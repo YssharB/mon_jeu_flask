@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aventure</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Bonjour {{ nom }}</h2>
+      {% if image %}
+      <img
+        src="{{ url_for('static', filename='images/' + image) }}"
+        alt="Scène"
+        class="illustration"
+      />
+      {% endif %}
+      <p>{{ texte }}</p>
+      <form method="post" action="/jeu">
+        <input type="hidden" name="nom" value="{{ nom }}" />
+        <input type="hidden" name="etape" value="{{ etape }}" />
+        {% if etape == 'intro' %}
+        <button type="submit" name="choix" value="gauche">
+          Aller à gauche
+        </button>
+        <button type="submit" name="choix" value="droite">
+          Aller à droite
+        </button>
+        {% else %}
+        <button type="submit" name="choix" value="o">Oui</button>
+        <button type="submit" name="choix" value="n">Non</button>
+        {% endif %}
+      </form>
+    </div>
+  </body>
+</html>

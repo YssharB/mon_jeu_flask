@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fin du jeu</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      {% if image %}
+      <img
+        src="{{ url_for('static', filename='images/' + image) }}"
+        alt="Scène"
+        class="illustration"
+      />
+      {% endif %}
+      <h2>Fin de l'aventure, {{ nom }}</h2>
+      <p>{{ texte }}</p>
+      <a href="/">Rejouer</a>
+    </div>
+  </body>
+</html>
