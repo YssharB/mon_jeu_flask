@@ -110,6 +110,7 @@ def jeu():
         return render_template("fin.html", nom=nom, texte=texte,  image="fin cabane éditeur.png")
 
     return render_template("fin.html", nom=nom, texte="Une erreur narrative est survenue. Peut-être un bug...")
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
